@@ -44,31 +44,72 @@
 /* 0 */
 /***/ function(module, exports, __webpack_require__) {
 
-	'use strict';
+	"use strict";
 
-	var _logger = __webpack_require__(1);
+	var _eleves = __webpack_require__(1);
 
-	var _logger2 = _interopRequireDefault(_logger);
+	var _eleves2 = _interopRequireDefault(_eleves);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	document.write('*  Bienvenue en DEV1.  *');
-	(0, _logger2.default)(); // yes
-	console.log('app loaded');
+	var eleves = [];
+	function init(eleves) {
+		eleves = [new _eleves2.default("Nahon", "Félix"), new _eleves2.default("Coquin", "Axel"), new _eleves2.default("Saigot", "Pierre"), new _eleves2.default("Dussol", "Clément")];
+
+		var $eleve = $('#eleve'),
+		    $one = $eleve.children('li').detach();
+
+		for (var j = 0; j < eleves.length; j++) {
+
+			var li = $one.clone(),
+			    eleve = eleves[j];
+			li.find(".name").html(eleve.nom + " " + eleve.prenom);
+
+			eleve.id = j;
+
+			$eleve.append(li);
+			li.attr('title', eleve.nom + " " + eleve.prenom);
+		}
+	}
+	$("#addeleve").on("click", function (event) {
+
+		console.log("test");
+		/*let elevechoice = new Eleve(eleve.nom, eleve.prenom);
+	 eleves.push(elevechoice);*/
+		var $eleve = $("#eleve"),
+		    $three = $eleve.children('li');
+		var neweleve = $three.clone().eq(1);
+		$eleve.append(neweleve);
+	});
+	init();
 
 /***/ },
 /* 1 */
 /***/ function(module, exports) {
 
-	'use strict';
+	"use strict";
 
 	Object.defineProperty(exports, "__esModule", {
 		value: true
 	});
 
-	exports.default = function () {
-		console.log('logger.js is RUNNING!!');
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	var Eleve =
+
+	/**
+	 * Représente les élèves de la classe
+	 * @param  {string} nom    nom de l'élève
+	 * @param  {string} prenom prénom de l'élève
+	 */
+	function Eleve(nom, prenom) {
+		_classCallCheck(this, Eleve);
+
+		this.nom = nom;
+		this.prenom = prenom;
 	};
+
+	exports.default = Eleve;
 
 /***/ }
 /******/ ]);
