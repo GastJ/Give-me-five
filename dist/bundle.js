@@ -53,8 +53,9 @@
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	var eleves = [];
+
 	function init(eleves) {
-		eleves = [new _eleves2.default("Nahon", "Félix"), new _eleves2.default("Coquin", "Axel"), new _eleves2.default("Saigot", "Pierre"), new _eleves2.default("Dussol", "Clément")];
+		eleves = [new _eleves2.default("Nahon", "Félix")];
 
 		var $eleve = $('#eleve'),
 		    $one = $eleve.children('li').detach();
@@ -64,23 +65,17 @@
 			var li = $one.clone(),
 			    eleve = eleves[j];
 			li.find(".name").html(eleve.nom + " " + eleve.prenom);
-
-			eleve.id = j;
-
 			$eleve.append(li);
 			li.attr('title', eleve.nom + " " + eleve.prenom);
 		}
-	}
-	$("#addeleve").on("click", function (event) {
+		$("#addeleve").on("click", function (event) {
 
-		console.log("test");
-		/*let elevechoice = new Eleve(eleve.nom, eleve.prenom);
-	 eleves.push(elevechoice);*/
-		var $eleve = $("#eleve"),
-		    $three = $eleve.children('li');
-		var neweleve = $three.clone().eq(1);
-		$eleve.append(neweleve);
-	});
+			var elevechoice = new _eleves2.default(document.getElementById("nom").value, document.getElementById("prenom").value);
+			eleves.push(elevechoice);
+			console.log(eleves);
+		});
+	}
+
 	init();
 
 /***/ },

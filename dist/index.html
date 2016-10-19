@@ -14,17 +14,24 @@
 	    </div>
 	</nav>
 	<div id="container">
-		<div class="row">
-			<div class="col-md-12">
-				<ul id="eleve">
-					<li><h1 class="name"></h1></li>
-				</ul>
-			</div>
-			<div class="row">
-				<div class="col-md-12">
-					<button class="button" id="addeleve">Ajouter un élève</button>
-				</div>
-			</div>
+		<div class="col-md-12">
+			<ul id="eleve">
+				<li><h1 class="name"></h1></li>
+			</ul>
+		</div>
+	</div>
+	<div id="container" class="dropdown">
+		<div class="col-md-12">
+			<button class="button dropdown-toggle" data-toggle="dropdown">Ajouter un élève</button>
+			<ul class="dropdown-menu menu_ajout_eleve">
+				<li>
+					<form method="post" action="Ajouter élève" accept-charset="UTF-8">
+						<input class="mb15" type="text" placeholder="Nom" id="nom" name="nom">
+						<input class="mb15" type="text" placeholder="Prénom" id="prenom" name="prenom">
+						<input class="btn btn-primary btn-block" type="button" id="addeleve" value="Ajouter">
+					</form>
+				</li>
+			</ul>
 		</div>
 	</div>
 	<script src="jquery.js"></script>
