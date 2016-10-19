@@ -1,3 +1,5 @@
+import Stats from './stats'
+
 export default class Eleve{
 
 	/**
@@ -8,5 +10,6 @@ export default class Eleve{
 	constructor(nom, prenom){
 		this.nom = nom;
 		this.prenom = prenom;
+		this.stats = new Stats();
 	}
 }

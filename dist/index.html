@@ -10,25 +10,30 @@
 <body>
 	<nav class="navbar navbar-default">
 	    <div class="navbar-header">
-	      <a class="navbar-brand" href="#">Give Me Five !</a>
+	      <a class="navbar-brand" href="#"><span class="glyphicon glyphicon-education"></span> Give Me Five !</a>
 	    </div>
 	</nav>
 	<div id="container">
 		<div class="col-md-12">
 			<ul id="eleve">
-				<li><h1 class="name"></h1></li>
+				<li>
+					<h1 class="name"></h1>
+					<p class="score">Score:</p>
+					<p class="ml70 mt-7"><span class="glyphicon glyphicon-ok"></span><span class="glyphicon glyphicon-time"></span><span class="glyphicon glyphicon-remove"></span></p>
+
+				</li>
 			</ul>
 		</div>
 	</div>
 	<div id="container" class="dropdown">
 		<div class="col-md-12">
-			<button class="button dropdown-toggle" data-toggle="dropdown">Ajouter un élève</button>
+			<button class="button button_add_eleve dropdown-toggle" data-toggle="dropdown">Ajouter un élève</button>
 			<ul class="dropdown-menu menu_ajout_eleve">
 				<li>
-					<form method="post" action="Ajouter élève" accept-charset="UTF-8">
-						<input class="mb15" type="text" placeholder="Nom" id="nom" name="nom">
-						<input class="mb15" type="text" placeholder="Prénom" id="prenom" name="prenom">
-						<input class="btn btn-primary btn-block" type="button" id="addeleve" value="Ajouter">
+					<form method="post" action="" accept-charset="UTF-8">
+						<input class="mb15" type="text" placeholder="Nom" id="nom" name="nom" required>
+						<input class="mb15" type="text" placeholder="Prénom" id="prenom" name="prenom" required>
+						<input class="button btn btn-primary btn-block" type="button" id="addeleve" value="Ajouter">
 					</form>
 				</li>
 			</ul>

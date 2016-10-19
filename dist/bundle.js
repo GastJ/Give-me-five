@@ -67,10 +67,16 @@
 			li.find(".name").html(eleve.nom + " " + eleve.prenom);
 			$eleve.append(li);
 			li.attr('title', eleve.nom + " " + eleve.prenom);
+			li.find('.score').html("Score:" + eleve.stats.getScore());
 		}
 		$("#addeleve").on("click", function (event) {
-
 			var elevechoice = new _eleves2.default(document.getElementById("nom").value, document.getElementById("prenom").value);
+			var $eleve = $("#eleve"),
+			    $three = $eleve.children('li');
+			var neweleve = $three.clone().eq(0);
+			neweleve.find(".name").html(elevechoice.nom + " " + elevechoice.prenom);
+			neweleve.attr('title', elevechoice.nom + " " + elevechoice.prenom);
+			$eleve.append(neweleve);
 			eleves.push(elevechoice);
 			console.log(eleves);
 		});
@@ -80,13 +86,19 @@
 
 /***/ },
 /* 1 */
-/***/ function(module, exports) {
+/***/ function(module, exports, __webpack_require__) {
 
-	"use strict";
+	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
 		value: true
 	});
+
+	var _stats = __webpack_require__(2);
+
+	var _stats2 = _interopRequireDefault(_stats);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -102,9 +114,49 @@
 
 		this.nom = nom;
 		this.prenom = prenom;
+		this.stats = new _stats2.default();
 	};
 
 	exports.default = Eleve;
+
+/***/ },
+/* 2 */
+/***/ function(module, exports) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	var Stats = function () {
+		function Stats() {
+			_classCallCheck(this, Stats);
+
+			this.presence = 0;
+			this.participation = 0;
+			this.passage = 0;
+		}
+
+		_createClass(Stats, [{
+			key: "getScore",
+			value: function getScore() {
+				var score = 0;
+				for (var stats in this) {
+					score += this[stats];
+				}
+				return score;
+			}
+		}]);
+
+		return Stats;
+	}();
+
+	exports.default = Stats;
 
 /***/ }
 /******/ ]);
