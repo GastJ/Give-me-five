@@ -60,8 +60,9 @@
 		var $eleve = $('#eleve'),
 		    $one = $eleve.children('li').detach();
 
-		var _loop = function _loop(j) {
+		// Création d'une boucle qui parcourt le tableau eleves pour les ajouter
 
+		var _loop = function _loop(j) {
 			var li = $one.clone(),
 			    eleve = eleves[j];
 			li.find(".name").html(eleve.nom);
@@ -69,6 +70,9 @@
 			$eleve.append(li);
 			li.attr('title', eleve.nom + " " + eleve.prenom);
 			li.find('.score').html("Score:" + eleve.stats.getScore());
+
+			// Remplace le nom et le prénom par des inputs
+
 			li.find("#modif_eleve").on("click", function (event) {
 				li.find(".name").html("<input type='text' placeholder='Nom' id='nomeleve' name='nomeleve' required/>").css("color", "black");
 				li.find(".firstname").html("<input type='text' placeholder='Prénom' id='prenomeleve' name='prenomeleve' required/>").css("color", "black");
@@ -191,9 +195,22 @@
 			key: "getScore",
 			value: function getScore() {
 				var score = 0;
-				for (var stats in this) {
-					score += this[stats];
-				}
+
+				// Gestion du score
+
+				$("#absent").on("click", function (event) {
+					score -= 10;
+					console.log(score);
+				});
+				$("#present").on("click", function (event) {
+					score += 10;
+					console.log(score);
+				});
+				$("#retard").on("click", function (event) {
+					score -= 2;
+					console.log(score);
+				});
+
 				return score;
 			}
 		}]);

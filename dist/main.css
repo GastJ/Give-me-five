@@ -6,7 +6,7 @@ input:valid {
   box-shadow: 0 0 0.3em rgb(0,200,0);
   width: 70px;
 }
-.glyphicon-ok, .glyphicon-time, .glyphicon-remove{
+.present, .retard, .absent{
 	font-size: 2rem;
     margin-left: -44px;
     margin-top: -30px;

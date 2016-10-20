@@ -10,8 +10,9 @@ function init(eleves){
 	let $eleve = $('#eleve'),
 		$one 	= $eleve.children('li').detach();
 
+	// Création d'une boucle qui parcourt le tableau eleves pour les ajouter
+	
 	for(let j=0; j<eleves.length; j++){
-
 		let li 		= $one.clone(),
 			eleve 	= eleves[j];
 			li.find(".name").html(eleve.nom);
@@ -19,6 +20,9 @@ function init(eleves){
 		$eleve.append(li);
 		li.attr('title', eleve.nom + " " +eleve.prenom);
 		li.find('.score').html("Score:" + eleve.stats.getScore());
+		
+		// Remplace le nom et le prénom par des inputs
+		
 		li.find("#modif_eleve").on("click",function(event){
 			li.find(".name").html("<input type='text' placeholder='Nom' id='nomeleve' name='nomeleve' required/>").css("color","black");
 			li.find(".firstname").html("<input type='text' placeholder='Prénom' id='prenomeleve' name='prenomeleve' required/>").css("color", "black");
