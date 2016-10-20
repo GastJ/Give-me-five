@@ -20,12 +20,12 @@ function init(eleves){
 		$eleve.append(li);
 		li.attr('title', eleve.nom + " " +eleve.prenom);
 		li.find('.score').html("Score:" + eleve.stats.getScore());
-		
+
 		// Remplace le nom et le prénom par des inputs
 		
 		li.find("#modif_eleve").on("click",function(event){
-			li.find(".name").html("<input type='text' placeholder='Nom' id='nomeleve' name='nomeleve' required/>").css("color","black");
-			li.find(".firstname").html("<input type='text' placeholder='Prénom' id='prenomeleve' name='prenomeleve' required/>").css("color", "black");
+			li.find(".name").html("<input type='text' placeholder='Nom' id='nomeleve' name='nomeleve' required/>");
+			li.find(".firstname").html("<input type='text' placeholder='Prénom' id='prenomeleve' name='prenomeleve' required/>");
 
 			// Modifie le nom par la valeur de l'input Nom
 		
