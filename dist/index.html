@@ -18,9 +18,10 @@
 			<ul id="eleve">
 				<li>
 					<h1 class="name"></h1>
+					<h1 class="firstname"></h1>
 					<p class="score">Score:</p>
-					<p class="ml70 mt-7"><span class="glyphicon glyphicon-ok"></span><span class="glyphicon glyphicon-time"></span><span class="glyphicon glyphicon-remove"></span></p>
-
+					<p class="ml70 mt-7"><span class="glyphicon glyphicon-remove" id="absent"></span><span class="glyphicon glyphicon-time" id="retard"></span><span class="glyphicon glyphicon-ok" id="present"></span></p>
+					<button class="button ml-25 mt-7" id="modif_eleve">Modifier</button>
 				</li>
 			</ul>
 		</div>
@@ -31,8 +32,8 @@
 			<ul class="dropdown-menu menu_ajout_eleve">
 				<li>
 					<form method="post" action="" accept-charset="UTF-8">
-						<input class="mb15" type="text" placeholder="Nom" id="nom" name="nom" required>
-						<input class="mb15" type="text" placeholder="Prénom" id="prenom" name="prenom" required>
+						<input class="mb5" type="text" placeholder="Nom" id="nom" name="nom" required>
+						<input class="mb5" type="text" placeholder="Prénom" id="prenom" name="prenom" required>
 						<input class="button btn btn-primary btn-block" type="button" id="addeleve" value="Ajouter">
 					</form>
 				</li>

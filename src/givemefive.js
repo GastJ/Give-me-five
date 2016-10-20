@@ -14,21 +14,41 @@ function init(eleves){
 
 		let li 		= $one.clone(),
 			eleve 	= eleves[j];
-			li.find(".name").html(eleve.nom + " " +eleve.prenom);
+			li.find(".name").html(eleve.nom);
+			li.find(".firstname").html(eleve.prenom);
 		$eleve.append(li);
 		li.attr('title', eleve.nom + " " +eleve.prenom);
 		li.find('.score').html("Score:" + eleve.stats.getScore());
+		li.find("#modif_eleve").on("click",function(event){
+			li.find(".name").html($("#nom").clone().css("color", "black"));
+		})
+		li.find("#modif_eleve").on("click",function(event){
+			li.find(".firstname").html($("#prenom").clone().css("color", "black"));
+		})
 	}
+	// Ajouter un élève / modifier un élève (maintenir cliquer pour modif...)
+	
 	$("#addeleve").on("click", function(event){
-	let elevechoice = new Eleve(document.getElementById("nom").value, document.getElementById("prenom").value);
-	let $eleve = $("#eleve"),
-		$three = $eleve.children('li');
-	let neweleve = $three.clone().eq(0);
-		neweleve.find(".name").html(elevechoice.nom + " " + elevechoice.prenom);
-		neweleve.attr('title', elevechoice.nom + " " +elevechoice.prenom);
-	$eleve.append(neweleve);
-	eleves.push(elevechoice);
-	console.log(eleves);
+		let elevechoice = new Eleve(document.getElementById("nom").value, document.getElementById("prenom").value);
+		let neweleve = $one.clone();
+			neweleve.find(".name").html(elevechoice.nom);
+			neweleve.find(".firstname").html(elevechoice.prenom);
+			neweleve.attr('title', elevechoice.nom + " " +elevechoice.prenom);
+		$eleve.append(neweleve);
+		eleves.push(elevechoice);
+		console.log(eleves);
+		neweleve.find("#modif_eleve").on("click",function(event){
+			neweleve.find(".name").html($("#nom").clone().css("color", "black"));
+		});
+		neweleve.find("#modif_eleve").on("click",function(event){
+			neweleve.find(".firstname").html($("#prenom").clone().css("color", "black"));
+		});
+		/*neweleve.find("#nom").keypress(function(event){
+			if(event.which == 13){
+				alert('You pressed enter!');
+				$("#nom").replaceWith("");
+			}
+		});*/
 	});
 }
 

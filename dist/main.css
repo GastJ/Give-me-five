@@ -4,6 +4,7 @@ body{
 }
 input:valid {
   box-shadow: 0 0 0.3em rgb(0,200,0);
+  width: 70px;
 }
 .glyphicon-ok, .glyphicon-time, .glyphicon-remove{
 	font-size: 2rem;
@@ -20,11 +21,20 @@ input:valid {
 .ml60{margin-left: 60px;}
 .ml70{margin-left: 70px;}
 .mr10{margin-right: 10px;}
-.mb15{margin-bottom: 15px;}
+.mb5{margin-bottom: 5px;}
 .mt-7{margin-top: -7px;}
-.red{color: red;}
+.ml-25{margin-left: -25px;}
+.black{color: #000;}
 .border{border:2px solid black;}
 .name{
+	font-size: 2rem;
+    margin-left: -20px;
+    margin-bottom: -20px;
+    font-weight: 300;
+    color: #fff;
+    text-shadow: 2px 2px 2px rgba(0,0,0, 1);
+}
+.firstname{
 	font-size: 2rem;
     margin-left: -20px;
     margin-bottom: 25px;
@@ -86,4 +96,10 @@ input:valid {
 	list-style-type: none;
 	display: inline-block;
 	margin-left: -27px;
+}
+#modif_eleve{
+	display: none;
+}
+#eleve:hover #modif_eleve{
+	display: inline;
 }

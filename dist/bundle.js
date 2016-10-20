@@ -60,25 +60,49 @@
 		var $eleve = $('#eleve'),
 		    $one = $eleve.children('li').detach();
 
-		for (var j = 0; j < eleves.length; j++) {
+		var _loop = function _loop(j) {
 
 			var li = $one.clone(),
 			    eleve = eleves[j];
-			li.find(".name").html(eleve.nom + " " + eleve.prenom);
+			li.find(".name").html(eleve.nom);
+			li.find(".firstname").html(eleve.prenom);
 			$eleve.append(li);
 			li.attr('title', eleve.nom + " " + eleve.prenom);
 			li.find('.score').html("Score:" + eleve.stats.getScore());
+			li.find("#modif_eleve").on("click", function (event) {
+				li.find(".name").html($("#nom").clone().css("color", "black"));
+			});
+			li.find("#modif_eleve").on("click", function (event) {
+				li.find(".firstname").html($("#prenom").clone().css("color", "black"));
+			});
+		};
+
+		for (var j = 0; j < eleves.length; j++) {
+			_loop(j);
 		}
+		// Ajouter un élève / modifier un élève (maintenir cliquer pour modif...)
+
 		$("#addeleve").on("click", function (event) {
 			var elevechoice = new _eleves2.default(document.getElementById("nom").value, document.getElementById("prenom").value);
-			var $eleve = $("#eleve"),
-			    $three = $eleve.children('li');
-			var neweleve = $three.clone().eq(0);
-			neweleve.find(".name").html(elevechoice.nom + " " + elevechoice.prenom);
+			var neweleve = $one.clone();
+			neweleve.find(".name").html(elevechoice.nom);
+			neweleve.find(".firstname").html(elevechoice.prenom);
 			neweleve.attr('title', elevechoice.nom + " " + elevechoice.prenom);
 			$eleve.append(neweleve);
 			eleves.push(elevechoice);
 			console.log(eleves);
+			neweleve.find("#modif_eleve").on("click", function (event) {
+				neweleve.find(".name").html($("#nom").clone().css("color", "black"));
+			});
+			neweleve.find("#modif_eleve").on("click", function (event) {
+				neweleve.find(".firstname").html($("#prenom").clone().css("color", "black"));
+			});
+			/*neweleve.find("#nom").keypress(function(event){
+	  	if(event.which == 13){
+	  		alert('You pressed enter!');
+	  		$("#nom").replaceWith("");
+	  	}
+	  });*/
 		});
 	}
 
