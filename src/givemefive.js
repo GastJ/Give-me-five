@@ -4,7 +4,7 @@ let eleves = [];
 
 function init(eleves){
 	eleves = [
-		new Eleve("Nahon","Félix")
+		new Eleve("Nahon","Félix",0)
 	]
 
 	let $eleve = $('#eleve'),
@@ -19,7 +19,22 @@ function init(eleves){
 			li.find(".firstname").html(eleve.prenom);
 		$eleve.append(li);
 		li.attr('title', eleve.nom + " " +eleve.prenom);
-		li.find('.score').html("Score:" + eleve.stats.getScore());
+		li.find('.score').html("Score:" + eleve.score);
+
+		// Gestion du score
+		
+		li.find($(".absent")).on("click",function(event){
+			eleve.score -= 10;
+			li.find('.score').html("Score:" + eleve.score);
+		});
+		li.find($(".present")).on("click",function(event){
+			eleve.score += 10;
+			li.find('.score').html("Score:" + eleve.score);
+		});
+		li.find($(".retard")).on("click",function(event){
+			eleve.score -= 2;
+			li.find('.score').html("Score:" + eleve.score);
+		});
 
 		// Remplace le nom et le prénom par des inputs
 		
@@ -47,15 +62,31 @@ function init(eleves){
 	
 	$("#addeleve").on("click", function(event){
 
-		let elevechoice = new Eleve(document.getElementById("nom").value, document.getElementById("prenom").value);
+		let elevechoice = new Eleve(document.getElementById("nom").value, document.getElementById("prenom").value, 0);
 		let neweleve = $one.clone();
 			neweleve.find(".name").html(elevechoice.nom);
 			neweleve.find(".firstname").html(elevechoice.prenom);
-			neweleve.find('.score').html("Score:" + elevechoice.stats.getScore());
+			neweleve.find('.score').html("Score:" + elevechoice.score);
 			neweleve.attr('title', elevechoice.nom + " " +elevechoice.prenom);
 		$eleve.append(neweleve);
 		eleves.push(elevechoice);
-		console.log(eleves);
+
+		// Gestion du score sur les nouveaux élèves
+
+		neweleve.find($(".absent")).on("click",function(event){
+			elevechoice.score -= 10;
+			neweleve.find('.score').html("Score:" + elevechoice.score);
+		});
+		neweleve.find($(".present")).on("click",function(event){
+			elevechoice.score += 10;
+			neweleve.find('.score').html("Score:" + elevechoice.score);
+		});
+		neweleve.find($(".retard")).on("click",function(event){
+			elevechoice.score -= 2;
+			neweleve.find('.score').html("Score:" + elevechoice.score);
+		});
+		// Remplace le nom et le prénom par des inputs
+		
 		neweleve.find("#modif_eleve").on("click",function(event){
 			neweleve.find(".name").html("<input type='text' placeholder='Nom' id='nomeleve' name='nomeleve' required/>").css("color","black");
 			neweleve.find(".firstname").html("<input type='text' placeholder='Prénom' id='prenomeleve' name='prenomeleve' required/>").css("color", "black");

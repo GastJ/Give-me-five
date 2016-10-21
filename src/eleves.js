@@ -7,9 +7,10 @@ export default class Eleve{
 	 * @param  {string} nom    nom de l'élève
 	 * @param  {string} prenom prénom de l'élève
 	 */
-	constructor(nom, prenom){
+	constructor(nom, prenom, score){
 		this.nom = nom;
 		this.prenom = prenom;
+		this.score = 0 || score;
 		this.stats = new Stats();
 	}
 }

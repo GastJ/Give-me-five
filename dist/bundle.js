@@ -55,7 +55,7 @@
 	var eleves = [];
 
 	function init(eleves) {
-		eleves = [new _eleves2.default("Nahon", "Félix")];
+		eleves = [new _eleves2.default("Nahon", "Félix", 0)];
 
 		var $eleve = $('#eleve'),
 		    $one = $eleve.children('li').detach();
@@ -69,7 +69,22 @@
 			li.find(".firstname").html(eleve.prenom);
 			$eleve.append(li);
 			li.attr('title', eleve.nom + " " + eleve.prenom);
-			li.find('.score').html("Score:" + eleve.stats.getScore());
+			li.find('.score').html("Score:" + eleve.score);
+
+			// Gestion du score
+
+			li.find($(".absent")).on("click", function (event) {
+				eleve.score -= 10;
+				li.find('.score').html("Score:" + eleve.score);
+			});
+			li.find($(".present")).on("click", function (event) {
+				eleve.score += 10;
+				li.find('.score').html("Score:" + eleve.score);
+			});
+			li.find($(".retard")).on("click", function (event) {
+				eleve.score -= 2;
+				li.find('.score').html("Score:" + eleve.score);
+			});
 
 			// Remplace le nom et le prénom par des inputs
 
@@ -101,15 +116,31 @@
 
 		$("#addeleve").on("click", function (event) {
 
-			var elevechoice = new _eleves2.default(document.getElementById("nom").value, document.getElementById("prenom").value);
+			var elevechoice = new _eleves2.default(document.getElementById("nom").value, document.getElementById("prenom").value, 0);
 			var neweleve = $one.clone();
 			neweleve.find(".name").html(elevechoice.nom);
 			neweleve.find(".firstname").html(elevechoice.prenom);
-			neweleve.find('.score').html("Score:" + elevechoice.stats.getScore());
+			neweleve.find('.score').html("Score:" + elevechoice.score);
 			neweleve.attr('title', elevechoice.nom + " " + elevechoice.prenom);
 			$eleve.append(neweleve);
 			eleves.push(elevechoice);
-			console.log(eleves);
+
+			// Gestion du score sur les nouveaux élèves
+
+			neweleve.find($(".absent")).on("click", function (event) {
+				elevechoice.score -= 10;
+				neweleve.find('.score').html("Score:" + elevechoice.score);
+			});
+			neweleve.find($(".present")).on("click", function (event) {
+				elevechoice.score += 10;
+				neweleve.find('.score').html("Score:" + elevechoice.score);
+			});
+			neweleve.find($(".retard")).on("click", function (event) {
+				elevechoice.score -= 2;
+				neweleve.find('.score').html("Score:" + elevechoice.score);
+			});
+			// Remplace le nom et le prénom par des inputs
+
 			neweleve.find("#modif_eleve").on("click", function (event) {
 				neweleve.find(".name").html("<input type='text' placeholder='Nom' id='nomeleve' name='nomeleve' required/>").css("color", "black");
 				neweleve.find(".firstname").html("<input type='text' placeholder='Prénom' id='prenomeleve' name='prenomeleve' required/>").css("color", "black");
@@ -158,11 +189,12 @@
 	 * @param  {string} nom    nom de l'élève
 	 * @param  {string} prenom prénom de l'élève
 	 */
-	function Eleve(nom, prenom) {
+	function Eleve(nom, prenom, score) {
 		_classCallCheck(this, Eleve);
 
 		this.nom = nom;
 		this.prenom = prenom;
+		this.score = 0 || score;
 		this.stats = new _stats2.default();
 	};
 
@@ -178,45 +210,15 @@
 		value: true
 	});
 
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-	var Stats = function () {
-		function Stats() {
-			_classCallCheck(this, Stats);
+	var Stats = function Stats() {
+		_classCallCheck(this, Stats);
 
-			this.presence = 0;
-			this.participation = 0;
-			this.passage = 0;
-		}
-
-		_createClass(Stats, [{
-			key: "getScore",
-			value: function getScore() {
-				var score = 0;
-
-				// Gestion du score
-
-				$("#absent").on("click", function (event) {
-					score -= 10;
-					console.log(score);
-				});
-				$("#present").on("click", function (event) {
-					score += 10;
-					console.log(score);
-				});
-				$("#retard").on("click", function (event) {
-					score -= 2;
-					console.log(score);
-				});
-
-				return score;
-			}
-		}]);
-
-		return Stats;
-	}();
+		this.presence = 0;
+		this.participation = 0;
+		this.passage = 0;
+	};
 
 	exports.default = Stats;
 
