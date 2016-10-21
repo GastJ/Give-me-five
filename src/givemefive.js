@@ -1,6 +1,13 @@
-import Eleve from './eleves';
+import Eleve from './eleves'
+import moment from 'moment'
+import 'moment/locale/fr';
+let eleves = [],
+// Date du jour
+	now = moment();
+moment.locale('fr');
+$(".date").html(moment().format('LLLL'));
 
-let eleves = [];
+// Function init
 
 function init(eleves){
 	eleves = [
