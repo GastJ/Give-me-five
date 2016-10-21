@@ -42,6 +42,22 @@ input:valid {
     color: #fff;
     text-shadow: 2px 2px 2px rgba(0,0,0, 1);
 }
+/* class pour les clones */
+.name1{
+	font-size: 2rem;
+    margin-bottom: -20px;
+    font-weight: 300;
+    color: #fff;
+    text-shadow: 2px 2px 2px rgba(0,0,0, 1);
+}
+.firstname1{
+	font-size: 2rem;
+    margin-bottom: 25px;
+    font-weight: 300;
+    color: #fff;
+    text-shadow: 2px 2px 2px rgba(0,0,0, 1);
+}
+/* fin class clones */
 .score{
 	font-size: 2rem;
     margin-left: -20px;

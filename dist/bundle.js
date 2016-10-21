@@ -92,18 +92,20 @@
 				li.find(".name").html("<input type='text' placeholder='Nom' id='nomeleve' name='nomeleve' required/>");
 				li.find(".firstname").html("<input type='text' placeholder='Prénom' id='prenomeleve' name='prenomeleve' required/>");
 
-				// Modifie le nom par la valeur de l'input Nom
+				// Modifie le nom par la valeur de l'input Nom (quand on retire le curseur de l'input) 
 
 				li.find(".name").find("#nomeleve").on("mouseout", function (event) {
-
-					li.find(".name").html("<h1 class='name'>" + $("#nomeleve").val() + "</h1>");
+					if ($("#nomeleve").val() !== "") {
+						li.find(".name").html("<h1 class='name1'>" + $("#nomeleve").val() + "</h1>");
+					}
 				});
 
-				// Modifie le prénom par la valeur de l'input Prénom
+				// Modifie le prénom par la valeur de l'input Prénom (quand on retire le curseur de l'input)
 
 				li.find(".firstname").find("#prenomeleve").on("mouseout", function (event) {
-
-					li.find(".firstname").html("<h1 class='firstname'>" + $("#prenomeleve").val() + "</h1>");
+					if ($("#prenomeleve").val() !== "") {
+						li.find(".firstname").html("<h1 class='firstname1'>" + $("#prenomeleve").val() + "</h1>");
+					}
 				});
 			});
 		};
@@ -145,18 +147,20 @@
 				neweleve.find(".name").html("<input type='text' placeholder='Nom' id='nomeleve' name='nomeleve' required/>").css("color", "black");
 				neweleve.find(".firstname").html("<input type='text' placeholder='Prénom' id='prenomeleve' name='prenomeleve' required/>").css("color", "black");
 
-				// Modifie le nom par la valeur de l'input Nom
+				// Modifie le nom par la valeur de l'input Nom (quand on retire le curseur de l'input)
 
 				neweleve.find(".name").find("#nomeleve").on("mouseout", function (event) {
-
-					neweleve.find(".name").html("<h1 class='name'>" + $("#nomeleve").val() + "</h1>");
+					if ($("#nomeleve").val() !== "") {
+						neweleve.find(".name").html("<h1 class='name1'>" + $("#nomeleve").val() + "</h1>");
+					}
 				});
 
-				// Modifie le prénom par la valeur de l'input Prénom
+				// Modifie le prénom par la valeur de l'input Prénom (quand on retire le curseur de l'input)
 
 				neweleve.find(".firstname").find("#prenomeleve").on("mouseout", function (event) {
-
-					neweleve.find(".firstname").html("<h1 class='firstname'>" + $("#prenomeleve").val() + "</h1>");
+					if ($("#prenomeleve").val() !== "") {
+						neweleve.find(".firstname").html("<h1 class='firstname1'>" + $("#prenomeleve").val() + "</h1>");
+					}
 				});
 			});
 		});
